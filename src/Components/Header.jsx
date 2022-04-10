@@ -7,6 +7,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NavItem from './NavItem';
 import {Button} from '@mui/material'
 
+
+const extensionId='jklnlkhjnomickibcdjofabgbhadpkfm';
+
 export default function Header() {
     const navigate = useNavigate();
 
@@ -25,12 +28,12 @@ export default function Header() {
 
         // sending logged out info to extension
         let authObj =  JSON.stringify({"loggedInStatus":false,"authToken":null});
-        sendLoggedOutInfo({ extensionId: 'fkldjphfipjbgmadnppjeebikbhoaelm', authInfo: authObj})
+        sendLoggedOutInfo({ extensionId: `${extensionId}`, authInfo: authObj})
         localStorage.removeItem('token');
         // setloggedInStatus(false); 
 
         // redirect to login
-        navigate('/login');
+        navigate('/');
     }
 
   return (

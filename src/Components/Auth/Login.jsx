@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // import { LockClosedIcon } from '@heroicons/react/solid'
-
+const apiurl="http://localhost:8000/";
+const extensionId='jklnlkhjnomickibcdjofabgbhadpkfm';
 export default function Login(props) {
     const navigate = useNavigate();
     const {loggedInStatus,setloggedInStatus} = props;
@@ -24,7 +25,7 @@ export default function Login(props) {
     const loginUser = (e) => {
         e.preventDefault();
         console.log("logging in...");
-        axios.post(`https://Backend-1.prathameshdukare.repl.co/api/v1/signin`, {
+        axios.post(`${apiurl}api/v1/signin`, {
             "email":email,
             "password":password
         }).then(data => data.data)
@@ -32,10 +33,10 @@ export default function Login(props) {
             console.log(data);
             localStorage.setItem('token', data.token);
             setloggedInStatus(true);
-
+            console.log('here i am');
             //sending loggedin info to extension
             let authObj =  JSON.stringify({"loggedInStatus":true,authToken:data.token});
-            sendLoggedinInfo({ extensionId: 'fkldjphfipjbgmadnppjeebikbhoaelm', authInfo: authObj})
+            sendLoggedinInfo({ extensionId: `${extensionId}`, authInfo: authObj})
 
             // redirect to dashboard
             navigate('/dashboard');

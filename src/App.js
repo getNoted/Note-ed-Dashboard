@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path='/dashboard' element={<VideoList/>}></Route>
-      <Route path='/login' element={<Login loggedInStatus={loggedInStatus} setloggedInStatus={setloggedInStatus}/>}></Route>
+      <Route path='/' element={<Login loggedInStatus={loggedInStatus} setloggedInStatus={setloggedInStatus}/>}></Route>
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/video/:videoname' element={<VideoPage/>}></Route>
     </Routes>

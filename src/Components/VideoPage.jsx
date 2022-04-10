@@ -7,6 +7,8 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReactPlayer from 'react-player/youtube'
 
+const apiurl="http://localhost:8000/";
+
 export default function VideoPage(props) {
 
     let { videoname } = useParams();
@@ -20,9 +22,9 @@ export default function VideoPage(props) {
     const player = useRef();
     const [timestamp, setTimstamp] = useState();
     const fetchNotes = (name) => {
-        axios.get(`https://Backend-1.prathameshdukare.repl.co/api/v1/video/${videoname}`, {
+        axios.get(`${apiurl}api/v1/video/${videoname}`, {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpeWEiLCJlbWFpbCI6InNpeWFAZ21haWwuY29tIiwidXNlcl9pZCI6IjYyNGIzMDZjMmZkYTE2NDJjNzk2MzE1MiIsImlhdCI6MTY0OTQ0OTEwMX0.dsqSsUuG3_BzyhDQC1YgcAVDWvb-8tlsHRow-OvQmSg'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNpeWEiLCJlbWFpbCI6InNpeWFAZ21haWwuY29tIiwidXNlcl9pZCI6IjYyMzczMDhkZTlmZTZiNmJhYjYxOTU1NiIsImlhdCI6MTY0ODgyNTIyNX0.Eylls1_gGvXmuU8IrI_nTr7VZZWb2Qp4TarfCcF4ulY'
             }
         }).then(data => {
             console.log(data);
