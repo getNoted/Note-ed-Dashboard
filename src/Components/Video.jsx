@@ -22,7 +22,7 @@ export default function Video(props) {
           
           <p onClick={navigateToVideoPage} className='text-gray-50 '>{video_name}
           <br/><br/>
-          <ReactPlayer url={video_url} light='true' ></ReactPlayer>
+          <ReactPlayer url={video_url}  light='true' ></ReactPlayer>
           </p>
           
         </div>
