@@ -1,6 +1,6 @@
 /*global chrome*/
-import React , {useState} from 'react'
 import axios from 'axios';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // import { LockClosedIcon } from '@heroicons/react/solid'
@@ -35,7 +35,7 @@ export default function Login(props) {
 
             //sending loggedin info to extension
             let authObj =  JSON.stringify({"loggedInStatus":true,authToken:data.token});
-            sendLoggedinInfo({ extensionId: 'fkldjphfipjbgmadnppjeebikbhoaelm', authInfo: authObj})
+            sendLoggedinInfo({ extensionId: 'jdjjgbieedgmpmddnlmfehpanpagdjdf', authInfo: authObj})
 
             // redirect to dashboard
             navigate('/dashboard');

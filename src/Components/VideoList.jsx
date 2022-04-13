@@ -1,11 +1,10 @@
-import React,{useEffect,useState} from 'react'
 import axios from 'axios';
-import Video from './Video';
-import Header from './Header';
+import React, { useEffect, useState } from 'react';
 import Folders from './Folders';
+import Header from './Header';
+import Video from './Video';
 export default function VideoList() {
 const [videos,setVideos]=useState();
-
 
 useEffect(()=>{
     console.log("here");
@@ -17,7 +16,7 @@ useEffect(()=>{
         console.log(data);
         if(data.data.message==='success'){
             setVideos(data.data.videos);
-            
+            console.log(data.data.videos);
         }
     }).catch(err=>{
         console.log(err);
@@ -37,7 +36,7 @@ useEffect(()=>{
             <div className='flex flex-1 flex-col'>
 
             {videos && videos.map(video=>{
-                return <Video video={video}></Video>
+                return (<Video video={video}></Video>)
             })}
             </div>
         </main>
