@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
-
+import HomeHeder from './HomeHeder';
 export default function HomePage() {
 
   let navigate = useNavigate();
@@ -12,6 +12,7 @@ export default function HomePage() {
   // importScript("gradient.js");
   return (
     <>
+    <HomeHeder/>
      <div id="stripes">
         <span></span>
         <span></span>

@@ -11,7 +11,7 @@ export default function VideoList() {
             <Header />
             <main className='flex mt-16'>
                 <div className=' folders-component ml-8 mr-8 basis-1/4'>
-                    <Folders />
+                    
                 </div>
                 <VideoHome />
             </main>
