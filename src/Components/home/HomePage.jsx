@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
+import Experience from './Experience';
 
 export default function HomePage() {
 
@@ -18,7 +20,7 @@ export default function HomePage() {
         <span></span>
         <span></span>
         <span></span>
-    </div>
+    {/* </div>
     <div className='card' >
       <h1 className='font-serif text-7xl'>Note</h1>
       <br/>
@@ -28,14 +30,12 @@ export default function HomePage() {
         <div className='h-16' >
           <img src="https://img.icons8.com/color/96/000000/pencil--v1.png"/>
         </div>
-      </div>
+      </div> */}
     </div>
     <br/>
     
-    <div className='loginbtn font-serif text-2xl'>
-      <button onClick={toLogin}>Resume your Note Making</button>
-    </div>
-
+    <Experience></Experience>
+    <Footer></Footer>
     </>
 
   )
