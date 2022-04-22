@@ -65,6 +65,14 @@ export default function VideoHome() {
         
     }
 
+    const deleteVideoFromArray=(video_id)=>{
+        setVideos(videos=>{
+            return videos.filter(video=>{
+                return video.video_id!==video_id
+            })
+        })
+    }
+
     return (
 
         <>
@@ -111,7 +119,7 @@ export default function VideoHome() {
                 {videos && videos.map(video => {
                     return (
                         <div>
-                    <Video video={video}></Video>
+                    <Video video={video} deleteVideoFromArray={deleteVideoFromArray}></Video>
                         
                     </div>
                     )
