@@ -1,22 +1,50 @@
 import AddIcon from '@mui/icons-material/Add';
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Folder from './Folder';
-export default function Folders() {
-  const [activeFolder, setActiveFolder] = ("");
-  const [folders, setFolders] = (['video1' , 'video2'])
-  const getVideos = async() => {
-    console.log("inside GETTING VIDEOS FROM ACTIVE FOLDER");
-  }
+
+
+
+export default function Folders({setActive}) {
+  const url = 'http://localhost:8000'
+  const [folders, setFolders] = useState([])
+  const [allFolders, setAllFolders] = useState([])
+  const token=localStorage.getItem('token').toString();
   useEffect(() => {
-  getVideos()
-  }, [activeFolder])
+    getFolders();
+  
+  }, [folders])
+  
+
+  const getFolders = async() => {
+    console.log("Inside get folders");
     
+    axios.get(`${url}/api/v1/folder/getfolders?deleted=false`,{
+      headers : {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((res) => {
+      console.log(res.data);
+      if(res.data.message === "success"){
+        let arr = res.data.folders.map(x => x.folder_name )
+        
+        console.log(arr);
+        setAllFolders(arr);
+      }
+      console.log(allFolders);
+    }).catch((err) => {
+      console.log(err);
+    })
+
+  }
+  
   let foldername="Default";
-    let videos=["video1","video2"]
+ 
   return (
-    <div className='max-w-1/5' >
-        <Folder foldername={foldername} videos={videos}></Folder>
+    <div className='max-w-1/5 bg-light-green' >
+        <Folder foldername={foldername} videos={allFolders} setActive={setActive} ></Folder>
         <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>

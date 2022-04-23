@@ -11,9 +11,13 @@ import React, { useState } from 'react';
 export default function Folder(props) {
   const [open, setOpen] = useState(true);
 
+  console.log(props);
+  
   const handleClick = () => {
     setOpen(!open);
   };
+
+let {foldername, videos , setActive} = props
 // nreed to work with listitem
   return (
     <div className='' >
@@ -36,7 +40,7 @@ export default function Folder(props) {
         <List component="div" disablePadding>
 
           {props['videos'].map(video=>{
-            return <ListItemButton sx={{ pl: 4 }} style={{"background-image" : "rgba(0,130,173,0.1)"   }} >
+            return <ListItemButton sx={{ pl: 4 }} onClick={()=> setActive(video)} style={{"background-image" : "rgba(0,130,173,0.1)"  }} >
             {/* <ListItemIcon> */}
               <YouTubeIcon style={{"margin-right" : "8px"}} />
             {/* </ListItemIcon> */}

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import Options from '../Options';
@@ -10,6 +10,11 @@ export default function Video(props) {
     }
     let navigate = useNavigate();
     let { video_name, video_url, video_id } = props.video;
+
+    if(typeof video_url !== 'undefined'){
+    }else{
+        video_url = "https://www.youtube.com/watch?v=" + video_id
+    }
 
     const navigateToVideoPage = () => {
         navigate(`/video/${video_name}`, {
@@ -30,7 +35,7 @@ export default function Video(props) {
                 {/* {
                     video_name = video_name.slice(0 , 40) + (video_name.length > 20 ? ". . ." : " ")
                 } */}
-                <p className='text-new-green text-ellipsis overflow-hidden '>{updatedVideoName || video_name}</p>
+                <p className='text-black text-ellipsis overflow-hidden '>{updatedVideoName || video_name}</p>
             </div>
             <Options video_id={video_id} updateVideoName={updateVideoName} deleteVideoFromArray={props.deleteVideoFromArray}></Options>
 
