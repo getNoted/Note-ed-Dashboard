@@ -12,7 +12,7 @@ const extensionId = 'jklnlkhjnomickibcdjofabgbhadpkfm'
 
 export default function Login(props) {
 
-    const url = 'https://backend-1.prathameshdukare.repl.co';
+    const url = 'http://backend-1.prathameshdukare.repl.co';
 
     const navigate = useNavigate();
     const {loggedInStatus,setloggedInStatus} = props;
@@ -43,11 +43,8 @@ export default function Login(props) {
     const loginUser = (e) => {
         e.preventDefault();
         console.log("logging in...");
-<<<<<<< HEAD
+
         axios.post(`${API_URL}/api/v1/signin`, {
-=======
-        axios.post(`${url}/api/v1/signin`, {
->>>>>>> 76c573fe4b711b42d6bc74d35c650c0117283492
             "email":email,
             "password":password
         }).then(data => data.data)
