@@ -6,9 +6,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Folder from './Folder';
 export default function Folders(active) {
+<<<<<<< HEAD
 
   const API_URL = 'http://backend-1.prathameshdukare.repl.co'
 
+=======
+  const url = 'https://backend-1.prathameshdukare.repl.co'
+>>>>>>> 76c573fe4b711b42d6bc74d35c650c0117283492
   const [title,setTitle]=React.useState();
   const [folders,setFolders]=useState([]);
   const [modalOpen,setModalOpen]=React.useState(false);
@@ -27,7 +31,11 @@ export default function Folders(active) {
   },[])
 
   const getAllFolders=()=>{
+<<<<<<< HEAD
     axios.get(`${API_URL}/api/v1/folder/getfolders?deleted=false`,{
+=======
+    axios.get(`${url}/api/v1/folder/getfolders?deleted=false`,{
+>>>>>>> 76c573fe4b711b42d6bc74d35c650c0117283492
       headers: {
           'Authorization': `Bearer ${token}`
       },
@@ -54,7 +62,11 @@ export default function Folders(active) {
       return;
     }
     console.log(title);
+<<<<<<< HEAD
     axios.post(`${API_URL}/api/v1/folder/create`,{
+=======
+    axios.post(`${url}/api/v1/folder/create`,{
+>>>>>>> 76c573fe4b711b42d6bc74d35c650c0117283492
       folder_name:title
    },{
         

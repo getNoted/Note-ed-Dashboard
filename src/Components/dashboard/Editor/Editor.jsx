@@ -3,17 +3,39 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import tools from "./commonTools";
 import "./editor.css";
+<<<<<<< HEAD
 
 const API_HOST = 'http://backend-1.prathameshdukare.repl.co';
+=======
+import tools from "./commonTools"
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
-export default function Editor({ activeTimestamp ,videoName}) {
+const API_HOST = 'https://backend-1.prathameshdukare.repl.co';
+let alertDiv = document.getElementsByClassName("alert-bar")
+>>>>>>> 76c573fe4b711b42d6bc74d35c650c0117283492
 
-    
-
-    const [data, setData] = useState(null);
+export default function Editor({ activeTimestamp, videoName }) {
+    const [isAlert, setIsAlert] = useState(true);
+    // const [data, setData] = useState(null);
     const [loading, setLoading] = React.useState(true);
-    // const [isSaveDisabled, setSaveDisabled] = React.useState(false);
     const [disabledState, setdisabledState] = React.useState("");
+
+    const handleAlertFunction = ()=>{
+        // if(alertDiv)
+    }
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert  elevation={6} ref={ref} variant="filled" {...props} />;
+    });
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        // setIsAlert(false);
+        alertDiv[0].style.display = "none";
+        
+    };
 
     console.log(activeTimestamp)
     let exactTime = Object.keys(activeTimestamp)[0];
@@ -31,8 +53,8 @@ export default function Editor({ activeTimestamp ,videoName}) {
         });
     }
 
-    const saveData =  () => {
-        editor.save().then( (outputData) => {
+    const saveData = () => {
+        editor.save().then((outputData) => {
             console.log(outputData)
             // setdisabledState("disabled");
 
@@ -46,13 +68,20 @@ export default function Editor({ activeTimestamp ,videoName}) {
                 videoname: videoName,
                 timestamp: timestamp,
                 content: note
-            },{ 
+            }, {
                 headers: {
-                        authorization: `Bearer ${authToken}`,
-                    }
-                })
+                    authorization: `Bearer ${authToken}`,
+                }
+            })
                 .then((response) => {
-                    console.log(response);
+                    console.log(response, 'from editing api');
+                    if (response.status === 200) {
+                        // setIsAlert(true);
+                        alertDiv[0].style.display = "block";
+                        setTimeout(() => {
+                            alertDiv[0].style.display = "none";
+                        }, 2000);
+                    }
                 })
                 .catch((err) => {
                     console.log(err);
@@ -75,9 +104,10 @@ export default function Editor({ activeTimestamp ,videoName}) {
         <>
             <div className="video-nav">
                 <div className="video-info">
-                    <p className='exact-time'>{`Notes on : ${exactTime}`}</p>
+                    <p className='exact-time'>{`${exactTime}`}</p>
                     <button className={`save-notes-btn save-disabled shadow-sm btn-link px-2 ${disabledState}`} onClick={saveData}>Save</button>
                 </div>
+                
                 <div className="btn-container">
 
                 </div>
@@ -85,7 +115,15 @@ export default function Editor({ activeTimestamp ,videoName}) {
             </div>
 
             <div id="editorjs"></div>
-
+            <p className="add-more">add more notes...</p>
+           
+            <div className="alert-bar">
+                <Snackbar open={isAlert} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                        Notes Updated
+                    </Alert>
+                </Snackbar>
+            </div>
         </>
 
     )

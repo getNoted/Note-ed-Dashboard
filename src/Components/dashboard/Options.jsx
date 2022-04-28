@@ -95,11 +95,7 @@ const submitTitle=()=>{
        }
      }).catch(err=>{
        console.log(err);
-     }):axios.post(`${API_URL}/api/v1/video/editname`,{
     video_id:props.video_id,
-    new_video_name:title
-   },{
-        
          headers: {
              Authorization: `Bearer ${token}`
          },
@@ -121,11 +117,7 @@ const submitTitle=()=>{
 
 
 const deleteVideo=()=>{
-  props.folders?axios.post(`${API_URL}/api/v1/folder/delete`,{
     folder_id:props.folder_id,
-    folder_name:props.folder_name
-    
-   },{
         
          headers: {
              Authorization: `Bearer ${token}`
@@ -174,7 +166,8 @@ const deleteVideo=()=>{
         onClick={handleClick}
         className='self-end'
       >
-        <MoreHorizIcon className='text-gray-50 '/>
+        <MoreHorizIcon className='text-gray-50 ' style={{ color: "gray"
+}}/>
       </Button>
       <Menu
         id="basic-menu"

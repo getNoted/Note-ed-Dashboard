@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import featuresImg from "../../assets/images/features.svg";
 import whatNotedImg from "../../assets/images/what-noted.svg";
 import whyNotedImg from "../../assets/images/why-noted.svg";
-import './canvasStyles.css';
 import Experience from './Experience';
 import Footer from './Footer';
 import './styles.css';
+
+import listIcon from "../../assets/images/list-main.png";
+import youTubeIcon from "../../assets/images/youtube.svg";
+import icon from '../../assets/icon.png';
 
 
 
@@ -16,42 +19,61 @@ export default function HomePage() {
     const toLogin = () => {
         navigate('/login')
     }
-
-    
-
-    // importScript("gradient.js");
+    const toHome = () => {
+        navigate('/')
+    }
     return (
-        <>
-            <section className="navbar">
-                <div className="hero"><a href="#">Noted</a></div>
-                <div className="nav-items flex">
-                    <span className='rounded-full px-4 py-2 bg-new-blue ' ><a href="/register" className="nav-item get-started text-xl">Get started</a></span>
-                    <span  className='rounded-full px-4 py-2 bg-new-blue '><a href="/dashboard" className="nav-item go-to-dashboard text-xl">Dashboard</a></span>
-
-
+        <>      
+            <header className='header-section'>
+            {/* <div className="hero-heading-container">
+                <h1 className='hero-heading'>
+                    <img className="max-h-12 -mt-0 p-1 ml-20 -mb-12" src={icon} alt='logo' />
+                    <a className="relative left-32 bottom-2" href="/">Noted</a>
+                </h1>
+            </div> */}
+            <nav className="p-5 flex justify-between bg-white absolute top-0 -left-1 w-full mb-3">
+            {/* <MenuIcon/> */}
+            <div className="relative left-16 flex">
+                <span className="text-black flex content-center max-h-5 mb-2">
+                <span>
+                    <img src={icon} style={{height : '200%', marginLeft:"0rem"}}  alt='logo' />
+                </span>
+                </span>
+                <div className="relative right-20 text-5xl text-custom font-bold">
+                <button onClick={toHome}>Noted</button>
                 </div>
-            </section>
-
-        <div className='container'>
-            <div className="ocean">
-                {/* <div className="wave"></div>
-                <div className="wave"></div> */}
             </div>
-        </div>
+            </nav>
+
+                <div className="mt-12 my-hero">
+                    <div className="hero-info">
+                        <h1 className='short-intro'>Taking notes while watching Youtube?</h1>
+                        <p className="intro-text">Do it with the most easy to use note taking chrome extension</p>
+                        <div className="action-btns">
+                            <a href="/login" className="get-started">Get Started</a>
+                            <a href="" className="get-noted">Get Noted</a>
+                        </div>
+                    </div>
+
+                    <div className="hero-image">
+                        <img className='yt-head' src={youTubeIcon} alt="yotube logo" />
+                        <img className='list-head' src={listIcon} alt="list icon" />
+                    </div>
+                </div>
+            </header>
+
+
+
+
+
+
+
+
+
+
+
+
             <main className="main">
-                <div className="gradient">
-                    
-                </div>
-                <section className="hero-text-sec">
-                    <span>Taking notes while watching YouTube is difficult ?</span><br />
-                    <span className='text-black'>We’ve got you covered!</span>
-                </section>
-
-                <div className="download-sec py-12 mt-3">
-                    <h3 className='download-text'></h3><br />
-                    <a className='download-btn shadow-xl text-xl' href="#">Get Noted</a>
-                </div>
-
                 <section className="main-info-sec">
 
                     <div className="sub-info-sec bg-primary-light">
