@@ -26,7 +26,7 @@ export default function NotesContainer(props) {
     });
     const { video_name, video_id, player } = props;
 
-    let host = 'https://backend-1.prathameshdukare.repl.co'
+    let host = "http://backend-1.prathameshdukare.repl.co"
 
     const fetchNotes = () => {
         const token = localStorage.getItem('token').toString();

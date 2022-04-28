@@ -23,7 +23,7 @@ export default function Register() {
             console.log("FAILED");
             return;
         }
-        axios.post('https://Backend-1.prathameshdukare.repl.co/api/v1/signup', {
+        axios.post('http://Backend-1.prathameshdukare.repl.co/api/v1/signup', {
             "username" : name,
             "email" : email,
             "password" : password

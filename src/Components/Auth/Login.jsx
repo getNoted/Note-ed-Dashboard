@@ -12,13 +12,15 @@ const extensionId = 'jklnlkhjnomickibcdjofabgbhadpkfm'
 
 export default function Login(props) {
 
-    const url = 'https://backend-1.prathameshdukare.repl.co';
+    const url = 'http://backend-1.prathameshdukare.repl.co';
 
     const navigate = useNavigate();
     const {loggedInStatus,setloggedInStatus} = props;
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const notify = () => toast("Welcome back 😇 "); 
+
+    const API_URL  = 'http://backend-1.prathameshdukare.repl.co'
 
     const sendLoggedinInfo = ({ extensionId, authInfo})=>{
         chrome.runtime.sendMessage(extensionId, { authInfo }, response => {
@@ -41,7 +43,8 @@ export default function Login(props) {
     const loginUser = (e) => {
         e.preventDefault();
         console.log("logging in...");
-        axios.post(`${url}/api/v1/signin`, {
+
+        axios.post(`${API_URL}/api/v1/signin`, {
             "email":email,
             "password":password
         }).then(data => data.data)

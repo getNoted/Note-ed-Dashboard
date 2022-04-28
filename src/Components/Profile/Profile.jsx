@@ -13,7 +13,7 @@ export default function Profile() {
     const [data,setData]=useState({});
     const [stats,setStats]=useState({});
 
-    const API_URL = 'https://backend-1.prathameshdukare.repl.co'
+    const API_URL = 'http://backend-1.prathameshdukare.repl.co'
 
     const handleOpen=(e)=>{
         setModalType(e.target.value);

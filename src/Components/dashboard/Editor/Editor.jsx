@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import EditorJS from '@editorjs/editorjs';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import tools from "./commonTools";
 import "./editor.css";
+
 import tools from "./commonTools"
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-const API_HOST = 'https://backend-1.prathameshdukare.repl.co';
+const API_HOST = 'http://backend-1.prathameshdukare.repl.co'
 let alertDiv = document.getElementsByClassName("alert-bar")
 
 export default function Editor({ activeTimestamp, videoName }) {

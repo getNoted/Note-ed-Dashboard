@@ -16,7 +16,7 @@ export default function Options(props) {
   const [modalType,setModalType]=React.useState("");
   const open = Boolean(anchorEl);
 
-  const api_url = 'https://backend-1.prathameshdukare.repl.co'
+  const API_URL = 'http://backend-1.prathameshdukare.repl.co'
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,7 +43,7 @@ const submitChangeFolder=()=>{
     return;
   }
   
-  axios.post(`${api_url}/api/v1/video/changefolder`,{
+  axios.post(`${API_URL}/api/v1/video/changefolder`,{
     video_id:props.video_id,
     folder_name:newFolderName
    },{
@@ -73,7 +73,7 @@ const submitTitle=()=>{
     return;
   }
   
-  props.folders?axios.post(`${api_url}/api/v1/folder/editname`,{
+  props.folders?axios.post(`${API_URL}/api/v1/folder/editname`,{
     new_folder_name:title,
     old_folder_name:props.folder_name,
     folder_id:props.folder_id
@@ -95,11 +95,7 @@ const submitTitle=()=>{
        }
      }).catch(err=>{
        console.log(err);
-     }):axios.post(`${api_url}/api/v1/video/editname`,{
     video_id:props.video_id,
-    new_video_name:title
-   },{
-        
          headers: {
              Authorization: `Bearer ${token}`
          },
@@ -121,11 +117,7 @@ const submitTitle=()=>{
 
 
 const deleteVideo=()=>{
-  props.folders?axios.post(`${api_url}/api/v1/folder/delete`,{
     folder_id:props.folder_id,
-    folder_name:props.folder_name
-    
-   },{
         
          headers: {
              Authorization: `Bearer ${token}`
@@ -141,7 +133,7 @@ const deleteVideo=()=>{
        }
      }).catch(err=>{
        console.log(err);
-     }):axios.post(`${api_url}/api/v1/video/delete`,{
+     }):axios.post(`${API_URL}/api/v1/video/delete`,{
     video_id:props.video_id,
     
    },{
