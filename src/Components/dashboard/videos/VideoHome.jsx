@@ -11,7 +11,7 @@ import Video from "./Video";
 export default function VideoHome( active) {
 
     const [videos, setVideos] = useState();
-    let host = "http://localhost:8000"
+    let host = "http://backend-1.prathameshdukare.repl.co"
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
     

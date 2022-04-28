@@ -16,6 +16,8 @@ export default function Login(props) {
     const [password,setPassword] = useState('');
     const notify = () => toast("Welcome back 😇 "); 
 
+    const API_URL  = 'http://backend-1.prathameshdukare.repl.co'
+
     const sendLoggedinInfo = ({ extensionId, authInfo})=>{
         chrome.runtime.sendMessage(extensionId, { authInfo }, response => {
             if (!response.success) {
@@ -35,7 +37,7 @@ export default function Login(props) {
     const loginUser = (e) => {
         e.preventDefault();
         console.log("logging in...");
-        axios.post(`http://localhost:8000/api/v1/signin`, {
+        axios.post(`${API_URL}/api/v1/signin`, {
             "email":email,
             "password":password
         }).then(data => data.data)

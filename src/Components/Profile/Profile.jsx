@@ -13,6 +13,9 @@ export default function Profile() {
     const [modalType,setModalType]=useState(" ");
     const [data,setData]=useState({});
     const [stats,setStats]=useState({});
+
+    
+
     const handleOpen=(e)=>{
         setModalType(e.target.value);
         setOpen(true);
