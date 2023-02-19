@@ -11,7 +11,7 @@ import DropDownMenu from "../DropDownMenu";
 export default function VideoHome( active) {
 
     const [videos, setVideos] = useState();
-    let host = 'https://backend-1.prathameshdukare.repl.co'
+    let host ='https://noted-backend-v1.vercel.app'
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
     

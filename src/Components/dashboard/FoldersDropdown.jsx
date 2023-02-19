@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export default function BasicSelect(props) {
   const [folder, setFolder] = React.useState('');
-  const api_url = 'https://backend-1.prathameshdukare.repl.co'
+  const api_url = 'https://noted-backend-v1.vercel.app'
   const handleChange = (event) => {
     setFolder(event.target.value);
     props.changeFolder(event);

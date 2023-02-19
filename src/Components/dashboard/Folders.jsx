@@ -6,7 +6,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Folder from './Folder';
 export default function Folders(active) {
-  const url = 'https://backend-1.prathameshdukare.repl.co'
+  const url = 'https://noted-backend-v1.vercel.app'
   const [title,setTitle]=React.useState();
   const [folders,setFolders]=useState([]);
   const [modalOpen,setModalOpen]=React.useState(false);

@@ -16,7 +16,7 @@ export default function Options(props) {
   const [modalType,setModalType]=React.useState("");
   const open = Boolean(anchorEl);
 
-  const api_url = 'https://backend-1.prathameshdukare.repl.co'
+  const api_url = 'https://noted-backend-v1.vercel.app'
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

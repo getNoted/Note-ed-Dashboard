@@ -6,7 +6,7 @@ import tools from "./commonTools"
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-const API_HOST = 'https://backend-1.prathameshdukare.repl.co';
+const API_HOST = 'https://noted-backend-v1.vercel.app';
 let alertDiv = document.getElementsByClassName("alert-bar")
 
 export default function Editor({ activeTimestamp, videoName }) {

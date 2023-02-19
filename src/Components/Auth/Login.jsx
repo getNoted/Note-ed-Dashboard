@@ -11,9 +11,7 @@ import icon from '../../assets/icon.png';
 const extensionId = 'mddgplepaeofegeediconadgglhkokkg'
 
 export default function Login(props) {
-
-    const url = 'https://backend-1.prathameshdukare.repl.co';
-
+    const url = 'https://noted-backend-v1.vercel.app';
     const navigate = useNavigate();
     const {setloggedInStatus} = props;
     const [email,setEmail] = useState('');
@@ -38,6 +36,7 @@ export default function Login(props) {
     const toHome = () => {
         navigate('/')
     }
+    
     const loginUser = (e) => {
         e.preventDefault();
         console.log("logging in...");
@@ -127,7 +126,7 @@ export default function Login(props) {
                                         name="password"
                                         value={password}
                                         onChange={onPassChange}
-                                        type="password"
+                                        type="text"
                                         autoComplete="current-password"
                                         required
                                         className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"

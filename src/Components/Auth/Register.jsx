@@ -1,64 +1,64 @@
 import axios from 'axios';
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import icon from '../../assets/icon.png';
 
 export default function Register() {
-
-    const notify = () => toast("Welcome Aboard ! 😎 ");  
+    const notify = () => toast("Welcome Aboard ! 😎 ");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [comfirm, setComfirm] = useState("")
+    const [errorMsg, setErrorMsg] = useState("")
     const navigate = useNavigate();
     const toHome = () => {
         navigate('/')
     }
-    const registerUser = async(e) => {
+    const registerUser = async (e) => {
         e.preventDefault()
-        console.log("Into signUp zone");
-        if(password != comfirm){
+        if (password != comfirm) {
+            setErrorMsg("Passwords do not match")
             console.log("FAILED");
             return;
         }
-        axios.post('https://Backend-1.prathameshdukare.repl.co/api/v1/signup', {
-            "username" : name,
-            "email" : email,
-            "password" : password
-        }).then((res)=> res.data)
-        .then(res => {
-            
-            console.log(res);
-            if(res.message === "user created successfully"){
-                
-                localStorage.setItem('token_on_signup' , res.token)
-                navigate('/login')
-            }
+        axios.post('https://noted-backend-v1.vercel.app/api/v1/signup', {
+            "username": name,
+            "email": email,
+            "password": password
+        }).then((res) => res.data)
+            .then(res => {
 
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+                console.log(res);
+                if (res.message === "user created successfully") {
+
+                    localStorage.setItem('token_on_signup', res.token)
+                    navigate('/login')
+                }
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
-    useEffect(()=>{
+    useEffect(() => {
         document.title = "Register to Noted"
-      },[])
+    }, [])
     return (
         <div>
             <nav className="p-5 flex justify-between bg-white absolute top-0 -left-1 w-full mb-3">
-            {/* <MenuIcon/> */}
-            <div className="relative left-16 flex">
-                <span className="text-black flex content-center max-h-5 mb-2">
-                <span>
-                    <img src={icon} style={{height : '200%', marginLeft:"0rem"}}  alt='logo' />
-                </span>
-                </span>
-                <div className="relative right-20 text-5xl text-custom font-bold">
-                <button onClick={toHome}>Noted</button>
+                {/* <MenuIcon/> */}
+                <div className="relative left-16 flex">
+                    <span className="text-black flex content-center max-h-5 mb-2">
+                        <span>
+                            <img src={icon} style={{ height: '200%', marginLeft: "0rem" }} alt='logo' />
+                        </span>
+                    </span>
+                    <div className="relative right-20 text-5xl text-custom font-bold">
+                        <button onClick={toHome}>Noted</button>
+                    </div>
                 </div>
-            </div>
             </nav>
             <div className='register-page'>
 
@@ -71,39 +71,41 @@ export default function Register() {
                         <form className="mt-8 space-y-6" action="#" method="POST">
                             <input type="hidden" name="remember" defaultValue="true" />
                             <div className="rounded-md shadow-sm -space-y-px">
-                            <input
-                                type="text"
-                                className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
-                                name="username"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder="User Name" />
+                                <input
+                                    type="text"
+                                    className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
+                                    name="username"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="User Name" />
 
-                            <input
-                                type="text"
-                                className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
-                                name="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email" />
+                                <input
+                                    type="text"
+                                    className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Email" />
 
-                            <input
-                                type="password"
-                                className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
-                                name="password"
-                                placeholder="Password"
-                                value={password}
-                                autoComplete="true"
-                                onChange={(e) => setPassword(e.target.value)} />
-                            <input
-                                type="password"
-                                className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
-                                name="confirm_password"
-                                placeholder="Confirm Password"
-                                value={comfirm}
-                                autoComplete="true"
-                                onChange={(e) => setComfirm(e.target.value)} />
-                                    
+                                <input
+                                    type="text"
+                                    className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
+                                    name="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    autoComplete="true"
+                                    onChange={(e) => setPassword(e.target.value)} />
+                                <input
+                                    type="text"
+                                    className="font-custom appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-custom focus:border-custom focus:z-10 sm:text-sm"
+                                    name="confirm_password"
+                                    placeholder="Confirm Password"
+                                    value={comfirm}
+                                    autoComplete="true"
+                                    onChange={(e) => setComfirm(e.target.value)} />
+                            </div>
+                            <div className="error-div my-1 font-custom text-sm text-red-600">
+                                {errorMsg}
                             </div>
 
                             <div>
